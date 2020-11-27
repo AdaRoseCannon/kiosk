@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Kiosk</title>
-</head>
-<body>
-	Ada Streaming
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Kiosk</title>
+		<link rel="stylesheet" href="style.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js"></script>
+		<script src="./main.js" defer></script>
+	</head>
+	<body>
+		<img id="title-el" src="Ada Twitch Delivery 1080/Twitch-Pack-ADA-Title.png">
+		<script>
+			document.currentScript.previousElementSibling.adaAnimation = [
+				[
+					// keyframes
+					{
+						opacity: '0',
+					},
+					{
+						opacity: '1',
+					},
+				],
+				{
+					// timing options
+					duration: 300,
+				},
+			];
+		</script>
+	</body>
 </html>
