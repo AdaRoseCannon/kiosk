@@ -11,7 +11,7 @@
 	<body>
 		<img id="title-el" src="Ada Twitch Delivery 1080/Twitch-Pack-ADA-Title.png">
 		<script>
-			document.currentScript.previousElementSibling.adaAnimation = [
+			const fadeAnim = [
 				[
 					// keyframes
 					{
@@ -26,6 +26,40 @@
 					duration: 300,
 				},
 			];
+			const fadeOutAnim = fadeAnim.slice(0);
+			fadeOutAnim[0] = fadeOutAnim[0].slice(0);
+			fadeOutAnim[0].reverse();
+
+			document.currentScript.previousElementSibling.adaAnimation = fadeAnim;
+			document.currentScript.previousElementSibling.adaExitAnimation = fadeOutAnim;
+		</script>
+		<div id="title">
+			<video class="video-in" src="./assets/title-anim.webm" muted="true"></video>
+			<video class="video-out" src="./assets/title-anim-out.webm" muted="true"></video>
+			<h1>Ada Rose Cannon</h1>
+			<h2>Developer Advocate</h2>
+		</div>
+		<script>
+			function animateVideo(hasOut) {
+				const container = this;
+				let vid = this.querySelector(hasOut ? '.video-out' : '.video-in');
+				return new Promise(function (resolve) {
+					vid.addEventListener('seeked', () => {
+						vid.addEventListener('play', function () {
+							container.classList.toggle('out', hasOut)
+							},
+							{ once: true }
+						);
+						vid.addEventListener('ended', resolve);
+						vid.play();
+					});
+					vid.currentTime = 0;
+				});
+			}
+
+			const el = document.currentScript.previousElementSibling;
+			el.adaFunctionIn = () => animateVideo.bind(el)(false);
+			el.adaFunctionOut = () => animateVideo.bind(el)(true);
 		</script>
 	</body>
 </html>

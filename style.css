@@ -1,16 +1,79 @@
-html {
-	height: 100%;
-}
-
-body {
-	background-color: #000;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
-	margin: 0;
+:root {
+	font-size:24px;
 }
 
 body > [id] {
+	display: none;
+}
+
+html, body {
+	background-color: #000;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#title {
+	position: absolute;
+	background-position: bottom left;
+	width: 100%;
+	height: 100%;
+	font-family: helvetica;
+	font-weight: normal;
+	color: aliceblue;
+}
+
+@keyframes titleanimin {
+	from { clip-path: inset(0 100% 0 0); }
+	to   { clip-path: inset(0 0% 0 0); }
+}
+@keyframes titleanimout {
+	from { clip-path: inset(0 0% 0 0); }
+	to { clip-path: inset(0 100% 0 0); }
+}
+
+#title > video {
+	width: 100%;
+	height: 100%;
+	object-fit: none;
+	object-position: bottom left;
+}
+
+#title > h1 {
+	position: absolute;
+	bottom: 66px;
+	left: 140px;
+	font-size: 80px;
+	animation: titleanimin 0.5s ease-out 0.8s both;
+	margin: 0;
+	font-weight: 100;
+}
+
+#title > h2 {
+	position: absolute;
+	bottom: 17px;
+	left: 137px;
+	font-size: 50px;
+	animation: titleanimin 0.5s ease-out 1s both;
+	margin: 0;
+	font-weight: 100;
+}
+
+#title.out > h1,
+#title.out > h2 {
+	animation: titleanimout 0.3s ease-out 0.2s both;
+}
+#title:not(.out) > .video-out {
+	display: none;
+}
+#title.out > .video-in {
 	display: none;
 }
