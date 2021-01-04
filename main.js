@@ -1,7 +1,7 @@
 (async function init() {
 
 	const unassignedElements = Array.from(document.querySelectorAll('body > [id]'));
-	const data = (await localforage.getItem('state')) || [];
+	// const data = (await localforage.getItem('state')) || [];
 	const state = new Map(data);
 
 	const fade = [
