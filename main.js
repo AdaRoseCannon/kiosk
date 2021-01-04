@@ -1,10 +1,11 @@
 (async function init() {
 
-	const unassignedElements = Array.from(document.querySelectorAll('body > [id]'));
 	const state = new Map(
 		// await localforage.getItem('state') ||
 		[]
 	);
+	const prepopulatedIds = Array.from(state.values());
+	const unassignedElements = Array.from(document.querySelectorAll('body > [id]')).filter(el => !prepopulatedIds.includes(el.id));
 
 	const fade = [
 		[
@@ -106,3 +107,4 @@
 	};
 
 }())
+	.catch(e => console.log(e));
