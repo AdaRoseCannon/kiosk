@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
 :root {
 	font-size:24px;
 }
@@ -26,7 +28,7 @@ body {
 	background-position: bottom left;
 	width: 100%;
 	height: 100%;
-	font-family: helvetica;
+	font-family: : 'Comfortaa', helvetica;
 	font-weight: normal;
 	color: aliceblue;
 }
