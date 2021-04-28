@@ -36,9 +36,13 @@
 		let channel = data[0];
 		let release = false;
 		const note = data[1];
+		const velocity = data[2];
 		let type = 'cc';
 
-		if (probablyRelease.has(channel)) {
+		// if it's 16 channels lower than an existing channel or if the velocity is 0
+		// then it's probably a button release so add 16 to the channel to get the correct button
+		// and mark it that it's a button release
+		if (probablyRelease.has(channel) || velocity === 0) {
 			release = true;
 			channel += 16;
 		}
